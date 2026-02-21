@@ -20,10 +20,10 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
 
     - name: Build imagem
-      run: docker build -t sergiocoti/api-pedidos:${{ github.run_number }} .
+      run: docker build -t sergiocoti/api-pedidos:v${{ github.run_number }} .
 
     - name: Push imagem
-      run: docker push sergiocoti/api-pedidos:${{ github.run_number }}
+      run: docker push sergiocoti/api-pedidos:v${{ github.run_number }}
 
     - name: Configurar kubeconfig
       run: |
@@ -32,4 +32,4 @@ jobs:
 
     - name: Atualizar deployment
       run: |
-        kubectl set image deployment/api-pedidos api-pedidos=sergiocoti/api-pedidos:${{ github.run_number }}
+        kubectl set image deployment/api-pedidos api-pedidos=sergiocoti/api-pedidos:v${{ github.run_number }}
