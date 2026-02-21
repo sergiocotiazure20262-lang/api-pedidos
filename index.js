@@ -7,6 +7,7 @@ app.get('/pedidos', async (req, res) => {
     try {
         const response = await axios.get('http://api-produtos-service:3000/produtos');
         res.json({
+            message : 'Pedido gerado com sucesso.',
             pedidoId: 100,
             produtos: response.data
         });
