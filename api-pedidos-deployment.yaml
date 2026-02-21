@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-pedidos
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: api-pedidos
+  template:
+    metadata:
+      labels:
+        app: api-pedidos
+    spec:
+      containers:
+      - name: api-pedidos
+        image: sergiocoti/api-pedidos:v1
+        ports:
+        - containerPort: 3001
